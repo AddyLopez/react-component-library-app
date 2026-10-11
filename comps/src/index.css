@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+/* adds margin-right to svg icons. selector means "for every svg that is an immediate child of a button..." */
+button > svg {
+  margin-right: 5px;
+}
