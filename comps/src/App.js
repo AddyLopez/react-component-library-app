@@ -4,19 +4,23 @@ const App = () => {
   return (
     <main>
       <div>
-        <Button>Click me!</Button>
+        <Button primary rounded>
+          Click me!
+        </Button>
       </div>
       <div>
-        <Button>Buy now!</Button>
+        <Button secondary outline>
+          Buy now!
+        </Button>
       </div>
       <div>
-        <Button>Whatever!</Button>
+        <Button success>Whatever!</Button>
       </div>
       <div>
-        <Button>Whoa!</Button>
+        <Button warning>Whoa!</Button>
       </div>
       <div>
-        <Button>Smashing!</Button>
+        <Button danger>Smashing!</Button>
       </div>
     </main>
   );
