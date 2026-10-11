@@ -10,10 +10,11 @@ const Button = ({
   danger,
   outline,
   rounded,
+  ...rest
 }) => {
-  // if primary is true, then the key will get appended to classnames
+  // if value of key is true, then the key will get appended to classnames
   const classes = twMerge(
-    classnames("px-3 py-1.5 border", {
+    classnames(rest.className, "flex items-center px-3 py-1.5 border", {
       "border-blue-500 bg-blue-500 text-white": primary,
       "border-gray-900 bg-gray-900 text-white": secondary,
       "border-green-500 bg-green-500 text-white": success,
@@ -29,7 +30,12 @@ const Button = ({
     }),
   );
 
-  return <button className={classes}>{children}</button>;
+  // pass along rest of props to button (e.g. event handlers)
+  return (
+    <button {...rest} className={classes}>
+      {children}
+    </button>
+  );
 };
 
 // named props below will be either true or undefined. not not undefined yields false. Number(true) yields 1; Number(false) yields 0.
