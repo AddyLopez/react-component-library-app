@@ -1,4 +1,6 @@
 import Button from "./Button";
+import { GoStar } from "react-icons/go";
+import { GoSquirrel } from "react-icons/go";
 
 const App = () => {
   return (
@@ -14,10 +16,16 @@ const App = () => {
         </Button>
       </div>
       <div>
-        <Button success>Whatever!</Button>
+        <Button success>
+          <GoStar />
+          Whatever!
+        </Button>
       </div>
       <div>
-        <Button warning>Whoa!</Button>
+        <Button warning>
+          <GoSquirrel />
+          Whoa!
+        </Button>
       </div>
       <div>
         <Button danger>Smashing!</Button>
