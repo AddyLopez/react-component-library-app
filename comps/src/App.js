@@ -1,37 +1,25 @@
-import Button from "./Button";
-import { GoStar } from "react-icons/go";
-import { GoSquirrel } from "react-icons/go";
+import Accordion from "./components/Accordion";
 
 const App = () => {
-  return (
-    <main>
-      <div>
-        <Button primary rounded>
-          Click me!
-        </Button>
-      </div>
-      <div>
-        <Button secondary outline>
-          Buy now!
-        </Button>
-      </div>
-      <div>
-        <Button success>
-          <GoStar />
-          Whatever!
-        </Button>
-      </div>
-      <div>
-        <Button warning>
-          <GoSquirrel />
-          Whoa!
-        </Button>
-      </div>
-      <div>
-        <Button danger>Smashing!</Button>
-      </div>
-    </main>
-  );
+  const items = [
+    {
+      label: "Can I use React on a project?",
+      content:
+        "Yes, of course. This is placeholder text and it doesn't really matter what it says right now.",
+    },
+    {
+      label: "Can I use JavaScript on a project?",
+      content:
+        "Yes, of course. This is placeholder text and it doesn't really matter what it says right now.",
+    },
+    {
+      label: "Can I use C++ on a project?",
+      content:
+        "Yes, of course. This is placeholder text and it doesn't really matter what it says right now.",
+    },
+  ];
+
+  return <Accordion items={items} />;
 };
 
 export default App;
