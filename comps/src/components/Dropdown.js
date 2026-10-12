@@ -21,14 +21,10 @@ const Dropdown = ({ options, selection, onSelect }) => {
     );
   });
 
-  let content = "Select...";
-  if (selection) {
-    content = selection.label;
-  }
-
+  // If selection is undefined or null, the div will show "Select..." instead of the label
   return (
     <section>
-      <div onClick={handleClick}>{content}</div>
+      <div onClick={handleClick}>{selection?.label || "Select..."}</div>
       {isOpen && <div>{renderedOptions}</div>}
     </section>
   );
