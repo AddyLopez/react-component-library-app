@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Dropdown = ({ options, selection, onSelect }) => {
+const Dropdown = ({ options, value, onChange }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
@@ -10,7 +10,7 @@ const Dropdown = ({ options, selection, onSelect }) => {
 
   const handleOptionClick = (option) => {
     setIsOpen(false); // Close dropdown
-    onSelect(option);
+    onChange(option);
   };
 
   const renderedOptions = options.map((option) => {
@@ -21,10 +21,10 @@ const Dropdown = ({ options, selection, onSelect }) => {
     );
   });
 
-  // If selection is undefined or null, the div will show "Select..." instead of the label
+  // If value is undefined or null, the div will show "Select..." instead of the label
   return (
     <section>
-      <div onClick={handleClick}>{selection?.label || "Select..."}</div>
+      <div onClick={handleClick}>{value?.label || "Select..."}</div>
       {isOpen && <div>{renderedOptions}</div>}
     </section>
   );
