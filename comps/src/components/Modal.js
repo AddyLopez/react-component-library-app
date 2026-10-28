@@ -1,6 +1,17 @@
 import ReactDOM from "react-dom";
+import { useEffect } from "react";
 
 const Modal = ({ onClose, children, actionBar }) => {
+  useEffect(() => {
+    // fixes a bug by preventing user from scrolling content below the modal window when modal is open
+    document.body.classList.add("overflow-hidden");
+
+    // return clean up function to remove class
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+    };
+  }, []);
+
   // use React Portal to render modal inside modal container. improves reliability of styling so that modal won't be subject to changes in the CSS position property of parent element from "static" (e.g. to relative, fixed, sticky, etc.)
   return ReactDOM.createPortal(
     <div>
