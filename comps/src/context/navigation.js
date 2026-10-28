@@ -25,13 +25,9 @@ const NavigationProvider = ({ children }) => {
     setCurrentPath(to);
   };
 
+  // context provider makes currentPath and navigate available to its children
   return (
-    <NavigationContext.Provider value={{}}>
-      <div>
-        <button onClick={() => navigate("/accordion")}>Go to acordion</button>
-        <button onClick={() => navigate("/dropdown")}>Go to dropdown</button>
-      </div>
-      ;{currentPath}
+    <NavigationContext.Provider value={{ currentPath, navigate }}>
       {children}
     </NavigationContext.Provider>
   );
