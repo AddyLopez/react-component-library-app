@@ -9,8 +9,9 @@ const ModalPage = () => {
     setShowModal(true);
   };
 
+  // adding a position that is not "static" to parent element breaks Modal, shows weakness in previous implementation
   return (
-    <section>
+    <section className="relative">
       <Button primary onClick={handleClick}>
         Open Modal
       </Button>
