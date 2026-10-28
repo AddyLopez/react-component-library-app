@@ -1,8 +1,11 @@
+import classnames from "classnames";
 import { useContext } from "react";
 import NavigationContext from "../context/navigation";
 
 const Link = ({ children, to }) => {
   const { navigate } = useContext(NavigationContext); // destructure navigate function from context object
+
+  const classes = classnames("text-blue-500");
 
   const handleClick = (event) => {
     // open link in new tab if command/control key is depressed when link is clicked
@@ -17,7 +20,7 @@ const Link = ({ children, to }) => {
   };
 
   return (
-    <a href={to} onClick={handleClick}>
+    <a href={to} className={classes} onClick={handleClick}>
       {children}
     </a>
   );
