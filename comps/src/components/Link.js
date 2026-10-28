@@ -1,10 +1,14 @@
 import classnames from "classnames";
 import useNavigation from "../hooks/use-navigation";
 
-const Link = ({ children, to }) => {
-  const { navigate } = useNavigation(); // destructure navigate function from custom hook
+const Link = ({ children, to, className, activeClassName }) => {
+  const { navigate, currentPath } = useNavigation(); // destructure navigate function and currentPath state property from custom hook navigation context
 
-  const classes = classnames("text-blue-500", "mb-3");
+  const classes = classnames(
+    "text-blue-500",
+    className,
+    currentPath === to && activeClassName,
+  ); // className prop makes component more reusable through customizable styling. if currentPath matches to prop, include activeClassName
 
   const handleClick = (event) => {
     // open link in new tab if command/control key is depressed when link is clicked
