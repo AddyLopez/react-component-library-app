@@ -9,13 +9,17 @@ const ModalPage = () => {
     setShowModal(true);
   };
 
+  const handleClose = () => {
+    setShowModal(false);
+  };
+
   // adding a position that is not "static" to parent element breaks Modal, shows weakness in previous implementation
   return (
-    <section className="relative">
+    <section>
       <Button primary onClick={handleClick}>
         Open Modal
       </Button>
-      {showModal && <Modal />}
+      {showModal && <Modal onClose={handleClose} />}
     </section>
   );
 };
