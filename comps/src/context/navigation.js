@@ -19,9 +19,19 @@ const NavigationProvider = ({ children }) => {
     };
   }, []);
 
+  // programmatic navigation
+  const navigate = (to) => {
+    window.history.pushState({}, "", to);
+    setCurrentPath(to);
+  };
+
   return (
     <NavigationContext.Provider value={{}}>
-      {currentPath}
+      <div>
+        <button onClick={() => navigate("/accordion")}>Go to acordion</button>
+        <button onClick={() => navigate("/dropdown")}>Go to dropdown</button>
+      </div>
+      ;{currentPath}
       {children}
     </NavigationContext.Provider>
   );
