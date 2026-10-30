@@ -4,13 +4,18 @@ const Table = ({ data, config }) => {
   });
 
   const renderedRows = data.map((fruit) => {
+    // uses the render function in the config object to dynamically display each cell's particular datum
+    const renderedCells = config.map((column) => {
+      return (
+        <td key={column.label} className="p-2">
+          {column.render(fruit)}
+        </td>
+      );
+    });
+
     return (
       <tr key={fruit.name} className="border-b">
-        <td className="p-3">{config[0].render(fruit)}</td>
-        <td className="p-3">
-          <div className={`p-3 m-2 ${config[1].render(fruit)}`}></div>
-        </td>
-        <td className="p-3">{config[2].render(fruit)}</td>
+        {renderedCells}
       </tr>
     );
   });
