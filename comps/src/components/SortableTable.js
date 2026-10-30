@@ -38,11 +38,11 @@ const SortableTable = (props) => {
     };
   });
 
-  let sortData = data; // Make a copy of data to sort so that props aren't mutated. Use let because the sort function later WILL mutate sortData.
+  let sortData = data; // Use let because the sort function later WILL mutate sortData.
 
   // if either sortOrder or sortBy is falsy (i.e. null), no sorting needs to be done
   if (sortOrder && sortBy) {
-    const column = config.find((column) => column.label === sortBy); // finds correct column in config to sort by
+    const { sortValue } = config.find((column) => column.label === sortBy); // finds correct column in config to sort by. destructures sortValue since the entire column object is not needed for sorting
   }
 
   // new config prop (updatedConfig) will override the old config prop in ...props
