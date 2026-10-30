@@ -42,7 +42,7 @@ const SortableTable = (props) => {
   return (
     <div>
       {sortOrder} - {sortBy}
-      <Table {...props} config={updatedConfig} />;
+      <Table {...props} config={updatedConfig} />
     </div>
   );
 };
