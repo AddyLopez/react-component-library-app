@@ -1,5 +1,5 @@
-const Table = () => {
-  return <div>I'm a Table!</div>;
+const Table = ({ data }) => {
+  return <div>{data.length}</div>;
 };
 
 export default Table;
