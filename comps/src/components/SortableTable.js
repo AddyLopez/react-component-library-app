@@ -1,7 +1,22 @@
 import Table from "./Table";
 
 const SortableTable = (props) => {
-  return <Table {...props} />;
+  const { config } = props; // props should never be modified in React
+
+  const updatedConfig = config.map((column) => {
+    if (!column.sortValue) {
+      return column;
+    }
+
+    // returns a new object (NOT modified props) with all the old key-value pairs and now a new header function
+    return {
+      ...column,
+      header: () => <th>{column.label} IS SORTABLE</th>,
+    };
+  });
+
+  // new config prop will override the old config prop in ...props
+  return <Table {...props} config={updatedConfig} />;
 };
 
 export default SortableTable;
