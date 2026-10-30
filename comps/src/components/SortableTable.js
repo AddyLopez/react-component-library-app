@@ -5,7 +5,7 @@ const SortableTable = (props) => {
   const [sortOrder, setSortOrder] = useState(null); // null, asc, or desc
   const [sortBy, setSortBy] = useState(null); // designates which column the table is sorting by
 
-  const { config } = props; // props should never be modified in React
+  const { config, data } = props; // props should never be modified in React
 
   // label below is from column of sortable header clicked
   // cycle goes from null to asc to desc to null, etc.
@@ -37,6 +37,13 @@ const SortableTable = (props) => {
       ),
     };
   });
+
+  let sortData = data; // Make a copy of data to sort so that props aren't mutated. Use let because the sort function later WILL mutate sortData.
+
+  // if either sortOrder or sortBy is falsy (i.e. null), no sorting needs to be done
+  if (sortOrder && sortBy) {
+    const column = config.find((column) => column.label === sortBy); // finds correct column in config to sort by
+  }
 
   // new config prop (updatedConfig) will override the old config prop in ...props
   return (
