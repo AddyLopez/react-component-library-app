@@ -1,8 +1,10 @@
+import { Fragment } from "react"; // provided to include key property on custom header without creating invalid HTML in the DOM
+
 const Table = ({ data, config, keyFn }) => {
   const renderedHeaders = config.map((column) => {
     // if column has a defined header function property, call the function to customize the particular header cell
     if (column.header) {
-      return column.header();
+      return <Fragment key={column.label}>{column.header()}</Fragment>;
     }
     return <th key={column.label}>{column.label}</th>;
   });
