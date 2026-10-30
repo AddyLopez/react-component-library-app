@@ -39,7 +39,12 @@ const SortableTable = (props) => {
   });
 
   // new config prop (updatedConfig) will override the old config prop in ...props
-  return <Table {...props} config={updatedConfig} />;
+  return (
+    <div>
+      {sortOrder} - {sortBy}
+      <Table {...props} config={updatedConfig} />;
+    </div>
+  );
 };
 
 export default SortableTable;
