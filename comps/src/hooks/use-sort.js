@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const useSort = () => {
+const useSort = (data, config) => {
   const [sortOrder, setSortOrder] = useState(null); // null, asc, or desc
   const [sortBy, setSortBy] = useState(null); // designates which column the table is sorting by
 
