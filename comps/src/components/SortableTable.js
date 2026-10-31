@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { GoArrowSmallDown, GoArrowSmallUp } from "react-icons/go";
 import Table from "./Table";
+import useSort from "../hooks/use-sort";
 
 const SortableTable = (props) => {
   const { config, data } = props; // props should never be modified in React
+  const { sortOrder, sortBy, sortedData, handleClick } = useSort(data, config);
 
   const updatedConfig = config.map((column) => {
     if (!column.sortValue) {
