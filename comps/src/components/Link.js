@@ -25,6 +25,7 @@ const Link = ({ children, to, className, activeClassName }) => {
   return (
     <a href={to} className={classes} onClick={handleClick}>
       {children}
+      {children}
     </a>
   );
 };
