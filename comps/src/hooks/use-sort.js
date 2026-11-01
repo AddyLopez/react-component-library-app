@@ -6,7 +6,7 @@ const useSort = (data, config) => {
 
   // label below is from column of sortable header clicked
   // cycle goes from null to asc to desc to null, etc.
-  const handleClick = (label) => {
+  const setSortColumn = (label) => {
     // If already sorting by one column but trying to sort by another column, reset sort order to ascending and update sortBy column to new one selected
     if (sortBy && label !== sortBy) {
       setSortOrder("asc");
@@ -53,7 +53,7 @@ const useSort = (data, config) => {
     sortOrder,
     sortBy,
     sortedData,
-    handleClick,
+    setSortColumn,
   };
 };
 
