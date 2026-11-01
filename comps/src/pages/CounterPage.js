@@ -1,28 +1,34 @@
-import { useState } from "react";
+import { useReducer } from "react";
 import Button from "../components/Button";
 import Panel from "../components/Panel";
 
+const reducer = (state, action) => {};
+
 const CounterPage = ({ initialCount }) => {
-  const [count, setCount] = useState(initialCount);
-  const [valueToAdd, setValueToAdd] = useState(0);
+  // const [count, setCount] = useState(initialCount);
+  // const [valueToAdd, setValueToAdd] = useState(0);
+  const [state, dispatch] = useReducer(reducer, {
+    count: initialCount,
+    valueToAdd: 0,
+  });
 
   const increment = () => {
-    setCount(count + 1);
+    // setCount(count + 1);
   };
 
   const decrement = () => {
-    setCount(count - 1);
+    // setCount(count - 1);
   };
 
   const handleChange = (event) => {
     const numberValue = parseInt(event.target.value) || 0; // converts string to integer. if empty string produces NaN (Not a Number), set numberValue to zero.
-    setValueToAdd(numberValue);
+    // setValueToAdd(numberValue);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setCount(count + valueToAdd);
-    setValueToAdd(0);
+    // setCount(count + valueToAdd);
+    // setValueToAdd(0);
   };
 
   // in input, value is either valueToAdd OR an empty string for better UI/UX so that a zero isn't shown by default
