@@ -3,12 +3,23 @@ import Button from "../components/Button";
 import Panel from "../components/Panel";
 
 const reducer = (state, action) => {
-  // must return a value or state will be undefined
   // must not mutate original state object. Therefore, copy over properties from previous state object and return a new object with updated properties.
-  return {
-    ...state,
-    count: state.count + 1,
-  };
+  // check action type to determine which slice of state to update
+  if (action.type === "increment") {
+    return {
+      ...state,
+      count: state.count + 1,
+    };
+  }
+
+  if (action.type === "change-value-to-add") {
+    return {
+      ...state,
+      valueToAdd: action.payload,
+    };
+  }
+
+  return state; // must return a value from reducer function or state will be undefined
 };
 
 const CounterPage = ({ initialCount }) => {
@@ -20,8 +31,9 @@ const CounterPage = ({ initialCount }) => {
   });
 
   const increment = () => {
-    // setCount(count + 1);
-    dispatch(); // any arguments provided to dispatch are the action argument in the reducer function
+    dispatch({
+      type: "increment",
+    }); // dispatch updates the state. any arguments provided to dispatch are the action argument in the reducer function
   };
 
   const decrement = () => {
@@ -30,7 +42,11 @@ const CounterPage = ({ initialCount }) => {
 
   const handleChange = (event) => {
     const numberValue = parseInt(event.target.value) || 0; // converts string to integer. if empty string produces NaN (Not a Number), set numberValue to zero.
-    // setValueToAdd(numberValue);
+
+    dispatch({
+      type: "change-value-to-add",
+      payload: numberValue,
+    });
   };
 
   const handleSubmit = (event) => {
