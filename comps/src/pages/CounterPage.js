@@ -4,7 +4,9 @@ import Panel from "../components/Panel";
 
 // This convention for action types prevents typos and makes debugging easier
 const INCREMENT_COUNT = "increment";
-const SET_VALUE_TO_ADD = "set-value-to-add";
+const DECREMENT_COUNT = "decrement";
+const SET_VALUE_TO_ADD = "set_value_to_add";
+const ADD_VALUE_TO_COUNT = "add_value_to_count";
 
 const reducer = (state, action) => {
   // must not mutate original state object. Therefore, copy over properties from previous state object and return a new object with updated properties.
@@ -14,6 +16,17 @@ const reducer = (state, action) => {
       return {
         ...state,
         count: state.count + 1,
+      };
+    case DECREMENT_COUNT:
+      return {
+        ...state,
+        count: state.count - 1,
+      };
+    case ADD_VALUE_TO_COUNT:
+      return {
+        ...state,
+        count: state.count + state.valueToAdd,
+        valueToAdd: 0, // reset valueToAdd
       };
     case SET_VALUE_TO_ADD:
       return {
@@ -40,7 +53,9 @@ const CounterPage = ({ initialCount }) => {
   };
 
   const decrement = () => {
-    // setCount(count - 1);
+    dispatch({
+      type: DECREMENT_COUNT,
+    });
   };
 
   const handleChange = (event) => {
@@ -54,8 +69,9 @@ const CounterPage = ({ initialCount }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // setCount(count + valueToAdd);
-    // setValueToAdd(0);
+    dispatch({
+      type: ADD_VALUE_TO_COUNT,
+    });
   };
 
   // in input, value is either valueToAdd OR an empty string for better UI/UX so that a zero isn't shown by default
