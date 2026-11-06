@@ -2,6 +2,7 @@ import { useReducer } from "react";
 import Button from "../components/Button";
 import Panel from "../components/Panel";
 
+// This convention for action types prevents typos and makes debugging easier
 const INCREMENT_COUNT = "increment";
 const SET_VALUE_TO_ADD = "set-value-to-add";
 
