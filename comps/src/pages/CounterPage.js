@@ -9,21 +9,20 @@ const SET_VALUE_TO_ADD = "set-value-to-add";
 const reducer = (state, action) => {
   // must not mutate original state object. Therefore, copy over properties from previous state object and return a new object with updated properties.
   // check action type to determine which slice of state to update
-  if (action.type === INCREMENT_COUNT) {
-    return {
-      ...state,
-      count: state.count + 1,
-    };
+  switch (action.type) {
+    case INCREMENT_COUNT:
+      return {
+        ...state,
+        count: state.count + 1,
+      };
+    case SET_VALUE_TO_ADD:
+      return {
+        ...state,
+        valueToAdd: action.payload,
+      };
+    default:
+      return state; // must return a value from reducer function or state will be undefined
   }
-
-  if (action.type === SET_VALUE_TO_ADD) {
-    return {
-      ...state,
-      valueToAdd: action.payload,
-    };
-  }
-
-  return state; // must return a value from reducer function or state will be undefined
 };
 
 const CounterPage = ({ initialCount }) => {
