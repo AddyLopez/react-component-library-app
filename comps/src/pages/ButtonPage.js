@@ -4,7 +4,7 @@ import { GoSquirrel } from "react-icons/go";
 
 const ButtonPage = () => {
   return (
-    <main>
+    <main className="flex gap-3 flex-col">
       <div>
         <Button primary rounded>
           Click me!
