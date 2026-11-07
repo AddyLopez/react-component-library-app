@@ -18,7 +18,7 @@ const ButtonPage = () => {
       <div>
         <Button success>
           <GoStar />
-          Whatever!
+          Success!
         </Button>
       </div>
       <div>
@@ -28,7 +28,7 @@ const ButtonPage = () => {
         </Button>
       </div>
       <div>
-        <Button danger>Smashing!</Button>
+        <Button danger>Danger!</Button>
       </div>
     </main>
   );
