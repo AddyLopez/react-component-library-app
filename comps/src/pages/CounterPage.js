@@ -77,7 +77,7 @@ const CounterPage = ({ initialCount }) => {
   // in input, value is either valueToAdd OR an empty string for better UI/UX so that a zero isn't shown by default
   return (
     <Panel className="m-3">
-      <h1 className="text-lg">Count is {state.count}</h1>
+      <h1 className="text-lg mb-2">Count is {state.count}</h1>
       <div className="flex flex-row">
         <Button onClick={increment}>Increment</Button>
         <Button onClick={decrement}>Decrement</Button>
